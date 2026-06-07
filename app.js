@@ -1,3 +1,40 @@
+App.tambahProduk = function(nama, harga, stok, fotoBase64) {
+    this.data.produk.push({ 
+        sku: 'P' + Date.now(), 
+        nama, 
+        harga, 
+        stok, 
+        foto: fotoBase64 // Simpan string base64 di sini
+    });
+    this.save();
+    alert("Produk berhasil ditambah!");
+};
+
+// Update Event Listener form di app.js
+document.getElementById('form-produk').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fotoInput = document.getElementById('foto');
+    const file = fotoInput.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const fotoBase64 = e.target.result;
+            // Panggil fungsi tambahProduk dengan foto
+            App.tambahProduk(
+                document.getElementById('nama').value,
+                parseInt(document.getElementById('harga').value),
+                parseInt(document.getElementById('stok').value),
+                fotoBase64
+            );
+            App.renderProduk();
+        };
+        reader.readAsDataURL(file); // Konversi ke Base64
+    } else {
+        // Jika tidak ada foto, kirim null
+        App.tambahProduk(..., null);
+    }
+});
 const App = {
     data: JSON.parse(localStorage.getItem('kasir_data')) || {
         toko: { nama: "KASIR TOKO SAYA", alamat: "Jl. UMKM" },
