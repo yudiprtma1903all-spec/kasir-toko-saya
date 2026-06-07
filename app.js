@@ -29,3 +29,33 @@ const App = {
         alert("Transaksi berhasil!");
     }
 };
+// Tambahkan fungsi ini di dalam object App di app.js
+App.renderProduk = function() {
+    const list = document.getElementById('list-produk');
+    list.innerHTML = '<h3>Daftar Produk:</h3>';
+    this.data.produk.forEach(p => {
+        list.innerHTML += `
+            <div class="produk-item">
+                <b>${p.nama}</b> - Rp ${p.harga} (Stok: ${p.stok})
+            </div>
+        `;
+    });
+};
+
+// Pasang Event Listener untuk Form
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('form-produk');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nama = document.getElementById('nama').value;
+            const harga = parseInt(document.getElementById('harga').value);
+            const stok = parseInt(document.getElementById('stok').value);
+            
+            App.tambahProduk(nama, harga, stok);
+            form.reset();
+            App.renderProduk(); // Refresh list
+        });
+    }
+    App.renderProduk(); // Load list saat pertama buka
+});
