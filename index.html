@@ -21,3 +21,14 @@
     <div id="list-produk"></div>
     <button onclick="App.renderDashboard()">Kembali ke Dashboard</button>
 </div>
+<form id="form-produk">
+    <input type="text" id="nama" placeholder="Nama Produk" required>
+    <input type="number" id="harga" placeholder="Harga Jual" required>
+    <input type="number" id="stok" placeholder="Stok Awal" required>
+    
+    <!-- Field Upload Foto -->
+    <label>Foto Produk:</label>
+    <input type="file" id="foto" accept="image/*">
+    
+    <button type="submit">Tambah Produk</button>
+</form>
