@@ -6,3 +6,11 @@ body { font-family: sans-serif; margin: 0; background: var(--bg-color); }
     .no-print { display: none !important; }
     .print-only { display: block !important; width: 58mm; }
 }
+.produk-item {
+    background: #fff;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border-left: 5px solid var(--primary-color);
+}
+input { display: block; width: 100%; margin: 10px 0; padding: 10px; }
