@@ -10,13 +10,14 @@
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
 </head>
 <body>
-    <div id="app"></div>
-    <div id="struk-print" class="print-only"></div>
-    <script src="app.js"></script>
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js');
-        }
-    </script>
-</body>
-</html>
+    <div id="app">
+    <h1>Kelola Produk</h1>
+    <form id="form-produk">
+        <input type="text" id="nama" placeholder="Nama Produk" required>
+        <input type="number" id="harga" placeholder="Harga Jual" required>
+        <input type="number" id="stok" placeholder="Stok Awal" required>
+        <button type="submit">Tambah Produk</button>
+    </form>
+    <div id="list-produk"></div>
+    <button onclick="App.renderDashboard()">Kembali ke Dashboard</button>
+</div>
